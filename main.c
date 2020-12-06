@@ -18,7 +18,7 @@ int main()
 		printf("Please choose a transaction type: \n O-Open Account \n B-Balance Inquiry \n D-Deposit \n W-Withdrawal \n C-Close Account \n I-Interest \n P-Print \n E-Exit \n");
 		
 		scanf(" %c", &in);
-		printf("_____%c_____",in);
+		//printf("_____%c_____",in);
 		switch(in){
 		case 'O':
 			printf("Please enter the amount for deposit: ");
@@ -143,7 +143,7 @@ int main()
 			break;
 		default:
 		printf("Invalid transaction type\n");
-		fflush(stdin);
+		//fflush(stdin);
 			break;
 		}
 
