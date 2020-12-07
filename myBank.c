@@ -12,7 +12,7 @@ void open(float amount){
 	if((freeSpace())>0)
 	{
 		//printf("entered if  ");
-		int freePlace;
+		int freePlace=0;
 		for (int i = 0; i < 50; i++)
 		{
 			if(Acc[i][1]!=1)
@@ -23,7 +23,7 @@ void open(float amount){
 		}
 		Acc [freePlace][0]=amount;
 		Acc [freePlace][1]=1;
-		int a = freePlace+901;
+		int a = (int)freePlace+901;
 		printf("New account number is: %d \n",a);
 	}
 	else
@@ -35,7 +35,7 @@ void Status(int x){
 	if(Acc[x-901][1]==1)//need to check
 	{
 		double am = (double) Acc[x-901][0];
-		printf("The balance of account number %d, is: %f",x,am);
+		printf("The balance of account number %d, is: %0.2f \n",x,am);
 	}
 	else
 	{
@@ -67,16 +67,17 @@ void withdraw(int x, float amount){
 	
 }
 void close (int x){
-	if(Acc [x-901][1]==1)
+		//printf("entered C");
+	if(isOpen(x))
+		{
+		Acc [x-901][0]=0;
+		Acc [x-901][1]=0;
+		printf("Closed account number %d \n",x);
+		
+	}else
 	{
-	Acc [x-901][0]=0;
-	printf("Closed account number %ls",&x);
-	//inBank--;
-}else
-{
-	printf("This account is closed");
-}
-
+		printf("This account is closed \n");
+	}
 }
 
 int isOpen(int x)
@@ -104,10 +105,10 @@ void Printer(){
 		{
 			int acc = (int)i+901;
 			float amo = Acc[i][0];
-			printf("The balance of account number %d is: %f", acc,amo);
+			printf("The balance of account number %d is: %0.2f \n", acc,amo);
 		}
-		
 	}
+	printf(" \nPrinting is done. \n");
 
 }
 void init(){
@@ -127,12 +128,3 @@ int freeSpace(){
 	
 	return ans;
 }
-
-char Catalog()
-{
-
-			char in;
-			
-			return in;
-}
-
