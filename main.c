@@ -13,12 +13,9 @@ int main()
 	int exit = 0;
 	while(exit!=1)
 	{
-		
-		
 		printf("Please choose a transaction type: \n O-Open Account \n B-Balance Inquiry \n D-Deposit \n W-Withdrawal \n C-Close Account \n I-Interest \n P-Print \n E-Exit \n");
-		
+		//while ((getchar()) != '\n'); 
 		scanf(" %c", &in);
-		//printf("_____%c_____",in);
 		switch(in){
 		case 'O':
 			printf("Please enter the amount for deposit: ");
@@ -38,6 +35,8 @@ int main()
 			{
 				printf("Failed to read the amount\n");
 			}
+			//while((in = getchar()) != '\n' && c != EOF)
+			//printf("hey");
 			break;
 		case 'B':
 			printf("Please enter account number:");
@@ -65,7 +64,7 @@ int main()
 			scanf(" %d",&userIn);
 			if(userIn>900&&userIn<951)
 			{
-				if(isOpen(userIn)==1)
+				if((isOpen(userIn))==1)
 				{
 				printf("Please enter the amount to deposit:");
 				scanf("%f",&amountIn);
@@ -80,7 +79,7 @@ int main()
 			}
 			else
 			{
-				printf("Invalid account number");
+				printf("Invalid account number \n");
 			}
 			break;
 		case 'W':
@@ -104,30 +103,31 @@ int main()
 			}
 			else
 			{
-				printf("Invalid account number");
+				printf("Invalid account number \n");
 			}
 			break;
 		case 'C':
-		
+			//while ((getchar()) != '\n'); 
 			printf("Please enter account number:");
-			scanf(" %ls",&userIn);
-			if(userIn!=0)
+			scanf("%d",&userIn);
+			if(userIn>900&&userIn<951)
 			{
 				if(isOpen(userIn)==1)
-				close(userIn);
-				else
 				{
+				close(userIn);
+				}
+				else{
 					printf("This account is closed\n");
 				}
 			}
 			else
-			printf("Failed to read the account number");
+			printf("Failed to read the account number \n");
 			break;
 		case 'I':
 		
 			printf("Please enter interest rate: ");
 			double I;
-			scanf(" %lf",&I);
+			scanf("%lf",&I);
 			if(I!=0)
 			addInterest(I);
 			else
@@ -143,10 +143,10 @@ int main()
 			break;
 		default:
 		printf("Invalid transaction type\n");
-		//fflush(stdin);
+		//fflush();
 			break;
 		}
-
+		while ((getchar()) != '\n'); 
 		//in = Catalog();	
 	}
 	printf("BYEBYE");
