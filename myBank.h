@@ -13,6 +13,5 @@
 	void Printer();
 	int isOpen(int x);
 	int freeSpace();
-	char Catalog();
 
 #endif
